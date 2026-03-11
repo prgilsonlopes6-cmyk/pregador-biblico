@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pregador Bíblico</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8B0000">
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#121212;
+color:white;
+text-align:center;
+}
+
+header{
+background:#8B0000;
+padding:20px;
+font-size:26px;
+font-weight:bold;
+}
+
+.menu{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+padding:20px;
+}
+
+button{
+padding:20px;
+font-size:16px;
+border:none;
+border-radius:12px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#f1d56b;
+}
+
+footer{
+margin-top:30px;
+padding:20px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+📖 Pregador Bíblico
+</header>
+
+<div class="menu">
+
+<button onclick="abrir('https://chatgpt.com/g/g-cHX2S8Qjy-comentario-biblico-completo-do-pregador')">
+🤖 Gerador de Sermões
+</button>
+
+<button onclick="abrir('https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM')">
+📚 Biblioteca Cristã
+</button>
+
+<button onclick="abrir('https://bibliaportugues.com/strongs.htm')">
+📖 Bíblia Strong Online
+</button>
+
+<button onclick="abrir('https://yausha.com.br/wp-content/uploads/2024/02/Dicionario-Biblico-Concordancia-de-Strong-RA-Lexico-Hebraico-Aramaico-e-Grego-de-Strong.pdf')">
+📚 Dicionário Strong PDF
+</button>
+
+<button onclick="alert('Áudio da Bíblia será integrado em breve')">
+🔊 Bíblia em Áudio
+</button>
+
+<button onclick="devocional()">
+🙏 Devocional Diário
+</button>
+
+<button onclick="alert('Quiz Bíblico em desenvolvimento')">
+🧠 Quiz Bíblico
+</button>
+
+<button onclick="sobre()">
+👤 Sobre o Autor
+</button>
+
+</div>
+
+<footer>
+Autor: Pastor Gilson Lopes
+</footer>
+
+<script>
+
+function abrir(link){
+window.open(link,'_blank')
+}
+
+function devocional(){
+
+const versiculos = [
+
+"Salmos 119:105 - Lâmpada para os meus pés é a tua palavra.",
+"João 8:32 - Conhecereis a verdade e a verdade vos libertará.",
+"Josué 1:9 - Sê forte e corajoso.",
+"Romanos 12:2 - Transformai-vos pela renovação da mente.",
+"Provérbios 3:5 - Confia no Senhor de todo o teu coração."
+
+]
+
+let v = versiculos[Math.floor(Math.random()*versiculos.length)]
+
+alert("Devocional de hoje:\n\n"+v)
+
+}
+
+function sobre(){
+
+alert("Aplicativo Pregador Bíblico\n\nAutor: Pastor Gilson Lopes\n\nFerramenta para estudo bíblico, sermões e aprofundamento nas Escrituras.")
+
+}
+
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('service-worker.js')
+}
+
+</script>
+
+</body>
+</html>
 
