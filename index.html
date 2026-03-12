@@ -1,151 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Pregador Bíblico</title>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2E7D32">
+<meta name="theme-color" content="#8B0000">
 
 <style>
 
 body{
 font-family: Arial;
-background:#f4f4f4;
-text-align:center;
-padding:20px;
-}
-
-h1{
-color:#2E7D32;
-}
-
-.botao{
-
-display:block;
-width:250px;
-margin:15px auto;
-padding:15px;
-background:#2E7D32;
+margin:0;
+background:#121212;
 color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:18px;
-
+text-align:center;
 }
 
-input{
+header{
+background:#8B0000;
+padding:20px;
+font-size:26px;
+font-weight:bold;
+}
 
-width:80%;
-padding:10px;
-margin-top:10px;
+.menu{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+padding:20px;
 }
 
 button{
-
-padding:12px 20px;
-background:#2E7D32;
-color:white;
-border:none;
-border-radius:5px;
-margin-top:10px;
+padding:20px;
 font-size:16px;
-
+border:none;
+border-radius:12px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+cursor:pointer;
 }
 
-#resultado{
+button:hover{
+background:#f1d56b;
+}
 
-margin-top:20px;
-text-align:left;
-background:white;
+footer{
+margin-top:30px;
 padding:20px;
-border-radius:8px;
-
+font-size:14px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>📖 Pregador Bíblico</h1>
+<header>
+📖 Pregador Bíblico
+</header>
 
-<p>Ferramenta de estudo profundo das Escrituras</p>
+<div class="menu">
 
-<a class="botao" href="https://www.biblegateway.com/" target="_blank">
-📖 Bíblia Strong
-</a>
-
-<a class="botao" href="https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM" target="_blank">
-📚 Biblioteca Bíblica
-</a>
-
-<hr>
-
-<h2>🤖 Gerador de Sermões</h2>
-
-<input type="text" id="tema" placeholder="Digite o tema ou versículo">
-
-<br>
-
-<button onclick="gerarSermao()">
-Gerar Sermão
+<button onclick="abrir('https://chatgpt.com/g/g-cHX2S8Qjy-comentario-biblico-completo-do-pregador')">
+🤖 Gerador de Sermões
 </button>
 
-<div id="resultado"></div>
+<button onclick="abrir('https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM')">
+📚 Biblioteca Cristã
+</button>
+
+<button onclick="abrir('https://bibliaportugues.com/strongs.htm')">
+📖 Bíblia Strong Online
+</button>
+
+<button onclick="abrir('https://yausha.com.br/wp-content/uploads/2024/02/Dicionario-Biblico-Concordancia-de-Strong-RA-Lexico-Hebraico-Aramaico-e-Grego-de-Strong.pdf')">
+📚 Dicionário Strong PDF
+</button>
+
+<button onclick="alert('Áudio da Bíblia será integrado em breve')">
+🔊 Bíblia em Áudio
+</button>
+
+<button onclick="devocional()">
+🙏 Devocional Diário
+</button>
+
+<button onclick="alert('Quiz Bíblico em desenvolvimento')">
+🧠 Quiz Bíblico
+</button>
+
+<button onclick="sobre()">
+👤 Sobre o Autor
+</button>
+
+</div>
+
+<footer>
+Autor: Pastor Gilson Lopes
+</footer>
 
 <script>
 
-function gerarSermao(){
+function abrir(link){
+window.open(link,'_blank')
+}
 
-let tema = document.getElementById("tema").value;
+function devocional(){
 
-let sermao = `
+const versiculos = [
 
-<h2>Sermão: ${tema}</h2>
+"Salmos 119:105 - Lâmpada para os meus pés é a tua palavra.",
+"João 8:32 - Conhecereis a verdade e a verdade vos libertará.",
+"Josué 1:9 - Sê forte e corajoso.",
+"Romanos 12:2 - Transformai-vos pela renovação da mente.",
+"Provérbios 3:5 - Confia no Senhor de todo o teu coração."
 
-<h3>📜 Introdução</h3>
-A Palavra de Deus nos convida a refletir profundamente sobre ${tema}. 
-A Bíblia revela que Deus deseja falar ao coração do seu povo através das Escrituras.
+]
 
-<h3>📖 Contexto Bíblico</h3>
-Ao examinarmos este tema nas Escrituras, percebemos que Deus sempre conduziu seu povo através da revelação da verdade divina.
+let v = versiculos[Math.floor(Math.random()*versiculos.length)]
 
-<h3>🔥 Ponto 1 — A Revelação de Deus</h3>
-Deus se revela ao homem através da Sua Palavra. O estudo profundo das Escrituras nos aproxima do conhecimento divino.
-
-<h3>🔥 Ponto 2 — A Transformação Espiritual</h3>
-A Palavra não apenas informa, mas transforma. Ela muda o coração, a mente e a vida do crente.
-
-<h3>🔥 Ponto 3 — Aplicação para Hoje</h3>
-O cristão é chamado a viver os princípios da Palavra no seu dia a dia, manifestando a presença de Deus ao mundo.
-
-<h3>🙏 Conclusão</h3>
-Que possamos buscar diariamente a presença de Deus através da leitura, meditação e prática da Sua Palavra.
-
-<h3>🕊 Oração Final</h3>
-Senhor Deus, ajuda-nos a compreender profundamente a Tua Palavra e viver segundo os Teus caminhos. Amém.
-
-`;
-
-document.getElementById("resultado").innerHTML = sermao;
+alert("Devocional de hoje:\n\n"+v)
 
 }
 
-</script>
+function sobre(){
 
-<script>
+alert("Aplicativo Pregador Bíblico\n\nAutor: Pastor Gilson Lopes\n\nFerramenta para estudo bíblico, sermões e aprofundamento nas Escrituras.")
 
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('service-worker.js');
+}
+
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('service-worker.js')
 }
 
 </script>
 
 </body>
-
 </html>
