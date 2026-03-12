@@ -15,10 +15,9 @@
 
 body{
 font-family: Arial;
-background:#f4f4f4;
-margin:0;
-padding:20px;
+background:#f2f2f2;
 text-align:center;
+padding:20px;
 }
 
 h1{
@@ -43,19 +42,19 @@ input{
 
 width:80%;
 padding:12px;
-font-size:16px;
 margin-top:10px;
+font-size:16px;
 
 }
 
 button{
 
 padding:12px 25px;
-font-size:16px;
 background:#2E7D32;
 color:white;
 border:none;
 border-radius:6px;
+font-size:16px;
 margin-top:10px;
 
 }
@@ -63,10 +62,10 @@ margin-top:10px;
 #resultado{
 
 margin-top:25px;
-background:white;
-padding:20px;
-border-radius:10px;
 text-align:left;
+background:white;
+padding:25px;
+border-radius:10px;
 
 }
 
@@ -78,7 +77,7 @@ text-align:left;
 
 <h1>📖 Pregador Bíblico</h1>
 
-<p>Ferramenta para pregadores e estudantes da Palavra</p>
+<p>Ferramenta avançada para estudo das Escrituras</p>
 
 <a class="botao" href="https://www.biblegateway.com/" target="_blank">
 📖 Bíblia Online
@@ -90,13 +89,13 @@ text-align:left;
 
 <hr>
 
-<h2>🤖 Gerador de Sermões com IA</h2>
+<h2>🤖 Gerador de Sermões Profundos</h2>
 
-<input type="text" id="tema" placeholder="Digite o tema ou versículo">
+<input type="text" id="tema" placeholder="Digite o tema ou versículo bíblico">
 
 <br>
 
-<button onclick="gerarSermaoIA()">
+<button onclick="gerarSermao()">
 Gerar Sermão
 </button>
 
@@ -104,56 +103,55 @@ Gerar Sermão
 
 <script>
 
-async function gerarSermaoIA(){
+function gerarSermao(){
 
 let tema = document.getElementById("tema").value;
 
-document.getElementById("resultado").innerHTML = "Gerando sermão...";
+let sermao = `
 
-try{
+<h2>📖 Sermão: ${tema}</h2>
 
-const resposta = await fetch("https://api.openai.com/v1/chat/completions",{
+<h3>Texto Base</h3>
+A mensagem de hoje está fundamentada na reflexão sobre ${tema}, um tema central para a vida cristã.
 
-method:"POST",
+<h3>Introdução</h3>
+Desde os tempos bíblicos, Deus tem revelado Sua vontade através das Escrituras. 
+Ao meditarmos sobre ${tema}, somos convidados a compreender a profundidade da revelação divina e o propósito de Deus para nossas vidas.
 
-headers:{
-"Content-Type":"application/json",
-"Authorization":"Bearer SUA_API_KEY_AQUI"
-},
+<h3>Contexto Histórico</h3>
+Cada passagem bíblica foi escrita dentro de um contexto histórico específico. 
+Compreender o ambiente cultural e espiritual da época nos ajuda a interpretar corretamente a mensagem de Deus.
 
-body: JSON.stringify({
+<h3>Ponto 1 — A Revelação de Deus</h3>
+Deus se revela ao homem através da Sua Palavra. 
+Quando nos aproximamos das Escrituras com humildade, encontramos direção, sabedoria e transformação.
 
-model:"gpt-4o-mini",
+<h3>Ponto 2 — A Transformação Espiritual</h3>
+A Palavra de Deus possui poder transformador. 
+Ela renova a mente, fortalece a fé e conduz o cristão a uma vida de santidade.
 
-messages:[
+<h3>Ponto 3 — A Prática da Palavra</h3>
+O verdadeiro conhecimento bíblico deve resultar em prática diária. 
+O cristão é chamado a viver os ensinamentos de Cristo em todas as áreas da vida.
 
-{
-role:"system",
-content:"Você é um teólogo especialista em Bíblia que escreve sermões profundos, expositivos e pastorais."
-},
+<h3>Aplicações Práticas</h3>
 
-{
-role:"user",
-content:`Crie um sermão profundo sobre ${tema}. Inclua introdução, contexto histórico, três pontos expositivos, aplicações práticas e conclusão pastoral.`
-}
+✔ buscar intimidade com Deus através da oração  
+✔ meditar diariamente nas Escrituras  
+✔ viver os princípios bíblicos no cotidiano  
+✔ testemunhar a fé através das atitudes  
 
-]
+<h3>Conclusão</h3>
+A reflexão sobre ${tema} nos lembra que Deus continua falando ao seu povo através da Sua Palavra. 
+Quando obedecemos às Escrituras, experimentamos transformação espiritual e crescimento na fé.
 
-})
+<h3>Oração Final</h3>
+Senhor Deus, ajuda-nos a compreender profundamente a Tua Palavra. 
+Que possamos viver segundo os teus ensinamentos e manifestar a tua verdade ao mundo. Amém.
 
-});
+`;
 
-const dados = await resposta.json();
-
-document.getElementById("resultado").innerHTML =
-dados.choices[0].message.content;
-
-}catch(erro){
-
-document.getElementById("resultado").innerHTML =
-"Erro ao gerar sermão.";
-
-}
+document.getElementById("resultado").innerHTML = sermao;
 
 }
 
