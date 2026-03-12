@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,7 +14,7 @@
 
 body{
 font-family: Arial;
-background:#f2f2f2;
+background:#f4f4f4;
 text-align:center;
 padding:20px;
 }
@@ -27,7 +26,7 @@ color:#2E7D32;
 .botao{
 
 display:block;
-width:260px;
+width:250px;
 margin:15px auto;
 padding:15px;
 background:#2E7D32;
@@ -41,31 +40,29 @@ font-size:18px;
 input{
 
 width:80%;
-padding:12px;
+padding:10px;
 margin-top:10px;
-font-size:16px;
-
 }
 
 button{
 
-padding:12px 25px;
+padding:12px 20px;
 background:#2E7D32;
 color:white;
 border:none;
-border-radius:6px;
-font-size:16px;
+border-radius:5px;
 margin-top:10px;
+font-size:16px;
 
 }
 
 #resultado{
 
-margin-top:25px;
+margin-top:20px;
 text-align:left;
 background:white;
-padding:25px;
-border-radius:10px;
+padding:20px;
+border-radius:8px;
 
 }
 
@@ -77,10 +74,10 @@ border-radius:10px;
 
 <h1>📖 Pregador Bíblico</h1>
 
-<p>Ferramenta avançada para estudo das Escrituras</p>
+<p>Ferramenta de estudo profundo das Escrituras</p>
 
 <a class="botao" href="https://www.biblegateway.com/" target="_blank">
-📖 Bíblia Online
+📖 Bíblia Strong
 </a>
 
 <a class="botao" href="https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM" target="_blank">
@@ -89,9 +86,9 @@ border-radius:10px;
 
 <hr>
 
-<h2>🤖 Gerador de Sermões Profundos</h2>
+<h2>🤖 Gerador de Sermões</h2>
 
-<input type="text" id="tema" placeholder="Digite o tema ou versículo bíblico">
+<input type="text" id="tema" placeholder="Digite o tema ou versículo">
 
 <br>
 
@@ -109,45 +106,29 @@ let tema = document.getElementById("tema").value;
 
 let sermao = `
 
-<h2>📖 Sermão: ${tema}</h2>
+<h2>Sermão: ${tema}</h2>
 
-<h3>Texto Base</h3>
-A mensagem de hoje está fundamentada na reflexão sobre ${tema}, um tema central para a vida cristã.
+<h3>📜 Introdução</h3>
+A Palavra de Deus nos convida a refletir profundamente sobre ${tema}. 
+A Bíblia revela que Deus deseja falar ao coração do seu povo através das Escrituras.
 
-<h3>Introdução</h3>
-Desde os tempos bíblicos, Deus tem revelado Sua vontade através das Escrituras. 
-Ao meditarmos sobre ${tema}, somos convidados a compreender a profundidade da revelação divina e o propósito de Deus para nossas vidas.
+<h3>📖 Contexto Bíblico</h3>
+Ao examinarmos este tema nas Escrituras, percebemos que Deus sempre conduziu seu povo através da revelação da verdade divina.
 
-<h3>Contexto Histórico</h3>
-Cada passagem bíblica foi escrita dentro de um contexto histórico específico. 
-Compreender o ambiente cultural e espiritual da época nos ajuda a interpretar corretamente a mensagem de Deus.
+<h3>🔥 Ponto 1 — A Revelação de Deus</h3>
+Deus se revela ao homem através da Sua Palavra. O estudo profundo das Escrituras nos aproxima do conhecimento divino.
 
-<h3>Ponto 1 — A Revelação de Deus</h3>
-Deus se revela ao homem através da Sua Palavra. 
-Quando nos aproximamos das Escrituras com humildade, encontramos direção, sabedoria e transformação.
+<h3>🔥 Ponto 2 — A Transformação Espiritual</h3>
+A Palavra não apenas informa, mas transforma. Ela muda o coração, a mente e a vida do crente.
 
-<h3>Ponto 2 — A Transformação Espiritual</h3>
-A Palavra de Deus possui poder transformador. 
-Ela renova a mente, fortalece a fé e conduz o cristão a uma vida de santidade.
+<h3>🔥 Ponto 3 — Aplicação para Hoje</h3>
+O cristão é chamado a viver os princípios da Palavra no seu dia a dia, manifestando a presença de Deus ao mundo.
 
-<h3>Ponto 3 — A Prática da Palavra</h3>
-O verdadeiro conhecimento bíblico deve resultar em prática diária. 
-O cristão é chamado a viver os ensinamentos de Cristo em todas as áreas da vida.
+<h3>🙏 Conclusão</h3>
+Que possamos buscar diariamente a presença de Deus através da leitura, meditação e prática da Sua Palavra.
 
-<h3>Aplicações Práticas</h3>
-
-✔ buscar intimidade com Deus através da oração  
-✔ meditar diariamente nas Escrituras  
-✔ viver os princípios bíblicos no cotidiano  
-✔ testemunhar a fé através das atitudes  
-
-<h3>Conclusão</h3>
-A reflexão sobre ${tema} nos lembra que Deus continua falando ao seu povo através da Sua Palavra. 
-Quando obedecemos às Escrituras, experimentamos transformação espiritual e crescimento na fé.
-
-<h3>Oração Final</h3>
-Senhor Deus, ajuda-nos a compreender profundamente a Tua Palavra. 
-Que possamos viver segundo os teus ensinamentos e manifestar a tua verdade ao mundo. Amém.
+<h3>🕊 Oração Final</h3>
+Senhor Deus, ajuda-nos a compreender profundamente a Tua Palavra e viver segundo os Teus caminhos. Amém.
 
 `;
 
