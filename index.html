@@ -54,12 +54,36 @@ margin:20px;
 padding:20px;
 background:#222;
 border-radius:10px;
+min-height:200px;
+text-align:left;
 }
 
 footer{
 margin-top:30px;
 padding:15px;
 font-size:14px;
+}
+
+/* Seções internas */
+section{
+margin-bottom:20px;
+padding:15px;
+background:#333;
+border-radius:10px;
+}
+
+audio{
+width:100%;
+margin-top:10px;
+}
+
+ul li a{
+color:#d4af37;
+text-decoration:none;
+}
+
+ul li a:hover{
+text-decoration:underline;
 }
 
 </style>
@@ -82,11 +106,11 @@ font-size:14px;
 📚 Biblioteca Cristã
 </button>
 
-<button onclick="abrir('https://www.blueletterbible.org/')">
+<button onclick="mostrarStrong()">
 📖 Bíblia Strong
 </button>
 
-<button onclick="abrir('https://www.bible.is/')">
+<button onclick="mostrarAudio()">
 🔊 Bíblia em Áudio
 </button>
 
@@ -110,10 +134,12 @@ Autor: Pastor Gilson Lopes
 
 <script>
 
+// Função abrir links externos
 function abrir(link){
 window.open(link,'_blank')
 }
 
+// --- Devocional ---
 function devocional(){
 
 const versiculos = [
@@ -136,6 +162,7 @@ document.getElementById("conteudo").innerHTML =
 
 }
 
+// --- Quiz Bíblico ---
 function quiz(){
 
 const perguntas = [
@@ -187,6 +214,32 @@ alert("❌ Resposta errada!")
 
 }
 
+}
+
+// --- Bíblia em Áudio ---
+function mostrarAudio(){
+document.getElementById("conteudo").innerHTML = `
+<h2>Bíblia em Áudio</h2>
+<p>Ouça um capítulo da Bíblia:</p>
+<audio controls>
+<source src="https://www.bible.is/audio/bible/por/60-MAT.mp3" type="audio/mpeg">
+Seu navegador não suporta áudio.
+</audio>
+`;
+}
+
+// --- Bíblia Strong ---
+function mostrarStrong(){
+document.getElementById("conteudo").innerHTML = `
+<h2>Bíblia Strong</h2>
+<p>Estudo Strong das palavras:</p>
+<ul>
+<li><a href="https://biblehub.com/strongs/gh430.htm" target="_blank">Deus (GH430)</a></li>
+<li><a href="https://biblehub.com/strongs/he3068.htm" target="_blank">Salvação (HE3068)</a></li>
+<li><a href="https://biblehub.com/strongs/gh2424.htm" target="_blank">Amor (GH2424)</a></li>
+</ul>
+<p>Clique nos links para estudar as palavras em detalhes.</p>
+`;
 }
 
 </script>
