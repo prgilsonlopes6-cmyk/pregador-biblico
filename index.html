@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,7 +14,7 @@
 body{
 font-family: Arial;
 margin:0;
-background:#121212;
+background:#111;
 color:white;
 text-align:center;
 }
@@ -23,7 +22,7 @@ text-align:center;
 header{
 background:#8B0000;
 padding:20px;
-font-size:26px;
+font-size:24px;
 font-weight:bold;
 }
 
@@ -38,7 +37,7 @@ button{
 padding:20px;
 font-size:16px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#d4af37;
 color:black;
 font-weight:bold;
@@ -51,7 +50,7 @@ background:#f1d56b;
 
 footer{
 margin-top:30px;
-padding:20px;
+padding:15px;
 font-size:14px;
 }
 
@@ -74,15 +73,11 @@ font-size:14px;
 📚 Biblioteca Cristã
 </button>
 
-<button onclick="abrir('https://bibliaportugues.com/strongs.htm')">
-📖 Bíblia Strong Online
+<button onclick="alert('Bíblia Strong em desenvolvimento')">
+📖 Bíblia Strong
 </button>
 
-<button onclick="abrir('https://yausha.com.br/wp-content/uploads/2024/02/Dicionario-Biblico-Concordancia-de-Strong-RA-Lexico-Hebraico-Aramaico-e-Grego-de-Strong.pdf')">
-📚 Dicionário Strong PDF
-</button>
-
-<button onclick="alert('Áudio da Bíblia será integrado em breve')">
+<button onclick="alert('Áudio da Bíblia em desenvolvimento')">
 🔊 Bíblia em Áudio
 </button>
 
@@ -92,10 +87,6 @@ font-size:14px;
 
 <button onclick="alert('Quiz Bíblico em desenvolvimento')">
 🧠 Quiz Bíblico
-</button>
-
-<button onclick="sobre()">
-👤 Sobre o Autor
 </button>
 
 </div>
@@ -113,29 +104,16 @@ window.open(link,'_blank')
 function devocional(){
 
 const versiculos = [
-
 "Salmos 119:105 - Lâmpada para os meus pés é a tua palavra.",
 "João 8:32 - Conhecereis a verdade e a verdade vos libertará.",
-"Josué 1:9 - Sê forte e corajoso.",
 "Romanos 12:2 - Transformai-vos pela renovação da mente.",
-"Provérbios 3:5 - Confia no Senhor de todo o teu coração."
-
+"Josué 1:9 - Sê forte e corajoso."
 ]
 
 let v = versiculos[Math.floor(Math.random()*versiculos.length)]
 
 alert("Devocional de hoje:\n\n"+v)
 
-}
-
-function sobre(){
-
-alert("Aplicativo Pregador Bíblico\n\nAutor: Pastor Gilson Lopes\n\nFerramenta para estudo bíblico, sermões e aprofundamento nas Escrituras.")
-
-}
-
-if('serviceWorker' in navigator){
-navigator.serviceWorker.register('service-worker.js')
 }
 
 </script>
