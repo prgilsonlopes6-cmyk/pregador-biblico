@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,138 +9,164 @@
 <title>Pregador Bíblico</title>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#8B0000">
+<meta name="theme-color" content="#2E7D32">
 
 <style>
 
 body{
 font-family: Arial;
+background:#f4f4f4;
 margin:0;
-background:#121212;
-color:white;
+padding:20px;
 text-align:center;
 }
 
-header{
-background:#8B0000;
-padding:20px;
-font-size:26px;
-font-weight:bold;
+h1{
+color:#2E7D32;
 }
 
-.menu{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-padding:20px;
+.botao{
+
+display:block;
+width:260px;
+margin:15px auto;
+padding:15px;
+background:#2E7D32;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:18px;
+
+}
+
+input{
+
+width:80%;
+padding:12px;
+font-size:16px;
+margin-top:10px;
+
 }
 
 button{
-padding:20px;
+
+padding:12px 25px;
 font-size:16px;
+background:#2E7D32;
+color:white;
 border:none;
-border-radius:12px;
-background:#d4af37;
-color:black;
-font-weight:bold;
-cursor:pointer;
+border-radius:6px;
+margin-top:10px;
+
 }
 
-button:hover{
-background:#f1d56b;
-}
+#resultado{
 
-footer{
-margin-top:30px;
+margin-top:25px;
+background:white;
 padding:20px;
-font-size:14px;
+border-radius:10px;
+text-align:left;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-📖 Pregador Bíblico
-</header>
+<h1>📖 Pregador Bíblico</h1>
 
-<div class="menu">
+<p>Ferramenta para pregadores e estudantes da Palavra</p>
 
-<button onclick="abrir('https://chatgpt.com/g/g-cHX2S8Qjy-comentario-biblico-completo-do-pregador')">
-🤖 Gerador de Sermões
+<a class="botao" href="https://www.biblegateway.com/" target="_blank">
+📖 Bíblia Online
+</a>
+
+<a class="botao" href="https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM" target="_blank">
+📚 Biblioteca Bíblica
+</a>
+
+<hr>
+
+<h2>🤖 Gerador de Sermões com IA</h2>
+
+<input type="text" id="tema" placeholder="Digite o tema ou versículo">
+
+<br>
+
+<button onclick="gerarSermaoIA()">
+Gerar Sermão
 </button>
 
-<button onclick="abrir('https://drive.google.com/drive/folders/1Y5Fj-6FhbAjjBqxjhzAAWKv77iiXs5nM')">
-📚 Biblioteca Cristã
-</button>
-
-<button onclick="abrir('https://bibliaportugues.com/strongs.htm')">
-📖 Bíblia Strong Online
-</button>
-
-<button onclick="abrir('https://yausha.com.br/wp-content/uploads/2024/02/Dicionario-Biblico-Concordancia-de-Strong-RA-Lexico-Hebraico-Aramaico-e-Grego-de-Strong.pdf')">
-📚 Dicionário Strong PDF
-</button>
-
-<button onclick="alert('Áudio da Bíblia será integrado em breve')">
-🔊 Bíblia em Áudio
-</button>
-
-<button onclick="devocional()">
-🙏 Devocional Diário
-</button>
-
-<button onclick="alert('Quiz Bíblico em desenvolvimento')">
-🧠 Quiz Bíblico
-</button>
-
-<button onclick="sobre()">
-👤 Sobre o Autor
-</button>
-
-</div>
-
-<footer>
-Autor: Pastor Gilson Lopes
-</footer>
+<div id="resultado"></div>
 
 <script>
 
-function abrir(link){
-window.open(link,'_blank')
+async function gerarSermaoIA(){
+
+let tema = document.getElementById("tema").value;
+
+document.getElementById("resultado").innerHTML = "Gerando sermão...";
+
+try{
+
+const resposta = await fetch("https://api.openai.com/v1/chat/completions",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer SUA_API_KEY_AQUI"
+},
+
+body: JSON.stringify({
+
+model:"gpt-4o-mini",
+
+messages:[
+
+{
+role:"system",
+content:"Você é um teólogo especialista em Bíblia que escreve sermões profundos, expositivos e pastorais."
+},
+
+{
+role:"user",
+content:`Crie um sermão profundo sobre ${tema}. Inclua introdução, contexto histórico, três pontos expositivos, aplicações práticas e conclusão pastoral.`
 }
-
-function devocional(){
-
-const versiculos = [
-
-"Salmos 119:105 - Lâmpada para os meus pés é a tua palavra.",
-"João 8:32 - Conhecereis a verdade e a verdade vos libertará.",
-"Josué 1:9 - Sê forte e corajoso.",
-"Romanos 12:2 - Transformai-vos pela renovação da mente.",
-"Provérbios 3:5 - Confia no Senhor de todo o teu coração."
 
 ]
 
-let v = versiculos[Math.floor(Math.random()*versiculos.length)]
+})
 
-alert("Devocional de hoje:\n\n"+v)
+});
+
+const dados = await resposta.json();
+
+document.getElementById("resultado").innerHTML =
+dados.choices[0].message.content;
+
+}catch(erro){
+
+document.getElementById("resultado").innerHTML =
+"Erro ao gerar sermão.";
 
 }
 
-function sobre(){
-
-alert("Aplicativo Pregador Bíblico\n\nAutor: Pastor Gilson Lopes\n\nFerramenta para estudo bíblico, sermões e aprofundamento nas Escrituras.")
-
 }
 
-if('serviceWorker' in navigator){
-navigator.serviceWorker.register('service-worker.js')
+</script>
+
+<script>
+
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('service-worker.js');
 }
 
 </script>
 
 </body>
-</html>
 
+</html>
